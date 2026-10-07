@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create beautiful website QR codes in seconds." />
+    <title>ScanIT — QR Code Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="ScanIT home"><span class="brand-mark">S</span><span>ScanIT</span></a>
+      </nav>
+
+      <section class="hero" id="top">
+        <h1>Turn every scan into a <em>visit.</em></h1>
+        <p>Create a polished, scannable QR code that sends customers straight to your website — no account, setup, or waiting.</p>
+      </section>
+
+      <section class="generator-layout" aria-label="QR code generator">
+        <form class="form-card" id="qrForm" novalidate>
+          <div class="card-heading">
+            <h2>Where should your QR go?</h2>
+          </div>
+
+          <div class="field-group">
+            <label for="companyName">Business or company name</label>
+            <input id="companyName" name="companyName" type="text" autocomplete="organization" placeholder="e.g. Acme Studio" maxlength="80" required />
+            <p class="field-error" id="companyError" role="alert"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="websiteUrl">Website URL</label>
+            <input id="websiteUrl" name="websiteUrl" type="text" inputmode="url" autocomplete="url" placeholder="e.g. acmestudio.com" required />
+            <p class="hint">We’ll add <strong>https://</strong> if it’s missing.</p>
+            <p class="field-error" id="urlError" role="alert"></p>
+          </div>
+
+          <button class="primary-button" type="submit"><span>Generate QR code</span><span aria-hidden="true">→</span></button>
+          <p class="privacy-note">Created privately in your browser. Nothing is saved.</p>
+        </form>
+
+        <aside class="preview-card" id="previewCard" aria-live="polite">
+          <div class="preview-placeholder" id="emptyPreview">
+            <div class="placeholder-grid"><span></span><span></span><span></span><span></span></div>
+            <h2>Your QR code will appear here.</h2>
+            <p>Enter your business details to get started.</p>
+          </div>
+          <div class="qr-result" id="qrResult" hidden>
+            <div class="qr-frame"><div id="qrcode" aria-label="Generated QR code"></div></div>
+            <h2 id="resultName"></h2>
+            <p>Scan to visit website</p>
+            <a id="resultUrl" href="#" target="_blank" rel="noopener noreferrer"></a>
+            <div class="action-row">
+              <button class="action-button download" type="button" id="downloadButton">Download PNG <span aria-hidden="true">↓</span></button>
+              <button class="icon-button" type="button" id="copyButton" aria-label="Copy website link" title="Copy website link">⧉</button>
+            </div>
+            <button class="reset-button" type="button" id="resetButton">Generate another</button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="trust-row" aria-label="Features">
+        <div><span>✓</span> Instant generation</div><div><span>✓</span> Ready to download</div><div><span>✓</span> No sign-up needed</div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
