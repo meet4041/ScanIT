@@ -27,17 +27,29 @@
             <h2>Where should your QR go?</h2>
           </div>
 
+          <div class="qr-type-selector" role="group" aria-label="QR code type">
+            <button class="qr-type active" type="button" data-type="website" aria-pressed="true">Website link</button>
+            <button class="qr-type" type="button" data-type="directions" aria-pressed="false">Get directions</button>
+          </div>
+
           <div class="field-group">
             <label for="companyName">Business or company name</label>
             <input id="companyName" name="companyName" type="text" autocomplete="organization" placeholder="e.g. Acme Studio" maxlength="80" required />
             <p class="field-error" id="companyError" role="alert"></p>
           </div>
 
-          <div class="field-group">
+          <div class="field-group" id="websiteField">
             <label for="websiteUrl">Website URL</label>
-            <input id="websiteUrl" name="websiteUrl" type="text" inputmode="url" autocomplete="url" placeholder="e.g. acmestudio.com" required />
+            <input id="websiteUrl" name="websiteUrl" type="text" inputmode="url" autocomplete="url" placeholder="e.g. acmestudio.com" />
             <p class="hint">We’ll add <strong>https://</strong> if it’s missing.</p>
             <p class="field-error" id="urlError" role="alert"></p>
+          </div>
+
+          <div class="field-group" id="addressField" hidden>
+            <label for="destinationAddress">Destination address</label>
+            <input id="destinationAddress" name="destinationAddress" type="text" autocomplete="street-address" placeholder="e.g. 1600 Amphitheatre Parkway, Mountain View" />
+            <p class="hint">Scanning opens directions from the user&rsquo;s current location.</p>
+            <p class="field-error" id="addressError" role="alert"></p>
           </div>
 
           <button class="primary-button" type="submit"><span>Generate QR code</span><span aria-hidden="true">→</span></button>
@@ -53,7 +65,7 @@
           <div class="qr-result" id="qrResult" hidden>
             <div class="qr-frame"><div id="qrcode" aria-label="Generated QR code"></div></div>
             <h2 id="resultName"></h2>
-            <p>Scan to visit website</p>
+            <p id="resultMessage">Scan to visit website</p>
             <a id="resultUrl" href="#" target="_blank" rel="noopener noreferrer"></a>
             <div class="action-row">
               <button class="action-button download" type="button" id="downloadButton">Download PNG <span aria-hidden="true">↓</span></button>
